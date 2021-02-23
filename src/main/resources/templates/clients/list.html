@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="www.http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+    <section th:fragment="list">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Client list</h4>
+                        </div>
+                        <div th:if="${clients != null and !clients.empty}">
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Saldo</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="client, counter : ${clients}">
+                                        <td>[[${counter.count}]]</td>
+                                        <td>[[${client.firstName}]]</td>
+                                        <td>[[${client.lastName}]]</td>
+                                        <td>[[${new java.text.DecimalFormat('$#,##0.00').format(client.balance)}]]</td>
+                                        <td>
+                                            <a th:href="@{/clients/edit/} + ${client.clientId}" class="btn btn-secondary">
+                                                <i class="fa fa-angle-double-right"></i> Editar
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form th:action="@{/clients/delete/} + ${client.clientId}" method="post">
+                                                <button type="submit" class="btn btn-dark">
+                                                    <i class="fa fa-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div th:if="${clients == null or clients.empty}" clas="text-center  p-2">
+                            La lista de clientes esta vacia.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h3>Saldo total</h3>
+                            <h4 class="display-4">
+                                [[${new java.text.DecimalFormat('$#,##0.00').format(totalBalance)}]]
+                            </h4>
+                        </div>
+                    </div>
+
+                    <div class="card text-center bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h3>Total clientes</h3>
+                            <h4 class="display-4">
+                                <i class="fa fa-users"></i>
+                                [[${totalClients}]]
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

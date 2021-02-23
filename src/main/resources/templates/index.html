@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/template :: head">
     <meta charset="UTF-8">
     <title>Inicio</title>
 </head>
 <body>
-    <h1>Inicio</h1>
+
+    <header th:replace="layout/template :: header"></header>
+    <section th:replace="layout/buttons :: add"></section>
+    <section th:replace="clients/list :: list"></section>
+    <section th:replace="clients/add :: add"></section>
+    <footer th:replace="layout/template :: footer"></footer>
+
 </body>
 </html>

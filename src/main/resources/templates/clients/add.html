@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="www.http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <section th:fragment="add">
+        <div id="add-client" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title">Agregar cliente</h5>
+                        <button class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <form th:action="@{/clients}" th:object="${client}" method="post" class="was-validated">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="firstName">Nombre</label>
+                                <input type="text" class="form-control" name="firstName" required="true"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Apellido</label>
+                                <input type="text" class="form-control" name="lastName" required="true"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="balance">Saldo</label>
+                                <input type="number" class="form-control" name="balance" required="true" step="any"/>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col">
+
+                                    <div class="form-group">
+                                        <label for="street">Calle</label>
+                                        <input type="text" class="form-control" name="street"/>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+
+                                    <div class="form-group">
+                                        <label for="number">Numero</label>
+                                        <input type="number" class="form-control" name="number"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

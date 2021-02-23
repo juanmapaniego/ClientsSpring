@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="www.http://thymeleaf.org">
+<head th:fragemt="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <header th:fragment="header" >
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+            <div class="container">
+                <a th:href="@{/}" class="nav-bar-brand">Control clientes</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item px-2">
+                            <a th:href="@{/}" class="nav-link active">Inicio</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <section id="main-header" class="py-2 bg-info text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>
+                            <i class="fa fa-cog"></i> Control de clientes
+                        </h1>
+                    </div>
+                </divclass>
+            </div>
+        </section>
+    </header>
+
+    <footer th:fragment="footer" class="bg-warning text-white mt-5 p-5">
+        <div class="container">
+            <div class="col">
+                <p class="lead text-center">Derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
