@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="www.http://thymeleaf.org">
+<head th:replace="layout/template :: head">
+    <meta charset="UTF-8">
+    <title>Modificar</title>
+</head>
+<body>
+    <header th:replace="layout/template :: header"></header>
+
+    <form th:action="@{/clients/edit}" th:object="${client}" method="post" class="was-validated">
+        <input type="hidden" name="clientId" th:field="*{clientId}"/>
+        <!-- Botones -->
+        <div id="actions" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a th:href="@{/clients}" class="btn btn-light btn-block">
+                            <i class="fa fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-success btn-block">
+                            <i class="fa fa-check"></i> Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalles -->
+        <div id="details">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Editar</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="firstName">Nombre</label>
+                                    <input type="text" class="form-control" name="firstName" required="true" th:field="*{firstName}"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lastName">Apellido</label>
+                                    <input type="text" class="form-control" name="lastName" required="true" th:field="*{lastName}"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="balance">Saldo</label>
+                                    <input type="text" class="form-control" name="balance" required="true" th:field="*{balance}"/>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col">
+
+                                        <div class="form-group">
+                                            <label for="street">Calle</label>
+                                            <input type="text" class="form-control" name="street" th:field="*{address.calle}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+
+                                        <div class="form-group">
+                                            <label for="number">Numero</label>
+                                            <input type="number" class="form-control" name="number" th:field="*{address.numero}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <h1>Modificar</h1>
+
+    <footer th:replace="layout/template :: footer"></footer>
+</body>
+</html>

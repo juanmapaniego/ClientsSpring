@@ -35,19 +35,30 @@ public class ClientController {
         return "redirect:/clients";
     }
 
-    @PutMapping("/clients/{id}")
-    public String modificar(Client client){
-        return "modificar";
+    @GetMapping("/clients/edit/{id}")
+    public String modificar(@PathVariable Long id,Model model){
+        Client client = new Client();
+        client.setClientId(id);
+        try {
+            client = clientService.findById(client);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        model.addAttribute("client", client);
+        return "clients/modify";
     }
 
     @PostMapping("/clients/delete/{id}")
-    public String delete(@PathVariable Integer id){
+    public String delete(@PathVariable Long id){
         Client client = new Client();
         client.setClientId(id);
         clientService.delete(client);
         return "redirect:/clients";
     }
 
-
-
+    @PostMapping("/clients/edit")
+    public String modificar(Client client) {
+        clientService.modify(client);
+        return "redirect:/clients";
+    }
 }

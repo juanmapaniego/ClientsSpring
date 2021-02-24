@@ -39,7 +39,7 @@ public class ClientServiceImpl implements ClientService{
     @Override
     @Transactional
     public Client modify(Client client) {
-        return null;
+        return clientRepository.save(client);
     }
 
     @Override
