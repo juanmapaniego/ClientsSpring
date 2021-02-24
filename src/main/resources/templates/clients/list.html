@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html   xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="www.http://thymeleaf.org">
+        xmlns:th="www.http://thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
@@ -33,12 +34,12 @@
                                         <td>[[${client.lastName}]]</td>
                                         <td>[[${new java.text.DecimalFormat('$#,##0.00').format(client.balance)}]]</td>
                                         <td>
-                                            <a th:href="@{/clients/edit/} + ${client.clientId}" class="btn btn-secondary">
+                                            <a  sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/clients/edit/} + ${client.clientId}" class="btn btn-secondary">
                                                 <i class="fa fa-angle-double-right"></i> Editar
                                             </a>
                                         </td>
                                         <td>
-                                            <form th:action="@{/clients/delete/} + ${client.clientId}" method="post">
+                                            <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{/clients/delete/} + ${client.clientId}" method="post">
                                                 <button type="submit" class="btn btn-dark">
                                                     <i class="fa fa-trash"></i> Eliminar
                                                 </button>

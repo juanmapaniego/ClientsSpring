@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/template :: head">
     <meta charset="UTF-8">
     <title>Inicio</title>
@@ -7,8 +8,8 @@
 <body>
 
     <header th:replace="layout/template :: header"></header>
-    <section th:replace="layout/buttons :: add"></section>
-    <section th:replace="clients/list :: list"></section>
+    <section sec:authorize="hasRole('ROLE_ADMIN')" th:replace="layout/buttons :: add"></section>
+    <section class= "mt-5" th:replace="clients/list :: list"></section>
     <section th:replace="clients/add :: add"></section>
     <footer th:replace="layout/template :: footer"></footer>
 
