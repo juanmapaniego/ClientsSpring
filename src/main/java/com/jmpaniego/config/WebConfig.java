@@ -1,5 +1,6 @@
 package com.jmpaniego.config;
 
+import guru.springframework.norris.chuck.ChuckNorrisQuotes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,5 +19,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public PasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public ChuckNorrisQuotes chuckNorrisQuotes(){
+        return new ChuckNorrisQuotes();
     }
 }
