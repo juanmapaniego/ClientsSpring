@@ -18,7 +18,7 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @GetMapping("/clients")
+    @GetMapping({"/clients","","/"})
     public String inicio(Model model){
         var clients = clientService.findAll();
         log.info("Ejecutando el controlador: " + clients.size());

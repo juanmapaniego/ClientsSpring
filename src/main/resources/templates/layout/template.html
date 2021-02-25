@@ -27,12 +27,12 @@
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a>
-                                <span sec:authentication="name" class="display-5 text-white">Usuario:</span>
-                            </a>
+                        <li sec:authorize="isAnonymous()" class="nav-item px-2 ">
+                                <a th:href="@{login}">
+                                    <i class="fa fa-user"></i> Iniciar Sesion
+                                </a>
                         </li>
-                        <li class="nav-item px-2 ">
+                        <li sec:authorize="isAuthenticated()" class="nav-item px-2 ">
                             <form th:action="@{/logout}" method="POST">
                                 <a class="nav-link" href="#" onclick="this.parentNode.submit();">
                                     <i class="fa fa-users"></i> Cerrar Sesion
